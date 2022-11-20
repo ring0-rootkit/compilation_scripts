@@ -1,7 +1,5 @@
 # compilecpp
 
-compilecpp - just g++ compiler. For convinience))
-
 Fixed annoying question. Now if you want to run your code after compilation you shuld type:
 
 ```bash
