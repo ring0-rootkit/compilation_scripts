@@ -30,5 +30,6 @@ run main -t
 # Installing:
 
 ```sh
+chmod +x install.sh
 ./install.sh
 ```
