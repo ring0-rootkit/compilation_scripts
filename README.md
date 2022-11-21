@@ -30,5 +30,5 @@ run main -t
 # Installing:
 
 ```sh
-sudo ./install.sh
+./install.sh
 ```
