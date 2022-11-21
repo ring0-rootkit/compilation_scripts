@@ -2,15 +2,15 @@
 
 Fixed annoying question. Now if you want to run your code after compilation you shuld type:
 
-```bash
+```sh
 compilecpp main r
 ```
 or
-```bash
+```sh
 compilecpp main -o name r
 ```
 If you execute script like this:
-```bash
+```sh
 compilecpp main
 ```
 It will just compile.
@@ -19,17 +19,17 @@ Added visual feature, now when compilation failed or has completed successfully,
 # run
 Added new script for running compiled programs form './bin' dirrectory.
 Usage:
-```bash
+```sh
 run main
 ```
 Added new feature, now you can whatch your program runtime just typing:
-```bash
+```sh
 run main -t
 ```
 
 # Installing:
 
-```bash
+```sh
 sudo cp compilecpp /bin/compilecpp
 sudo cp run /bin/run
 sudo chmod +x /bin/compilecpp
