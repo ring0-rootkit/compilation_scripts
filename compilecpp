@@ -3,9 +3,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' #no color
 if [[ "$2" == "-o" ]]; then
-	if [[ "$2" == "-o" ]]; then
-		out_folder="$3"
-	fi
+	out_folder="$3"
 else
 	out_folder=./bin/
 	if ! [ -e "$out_folder" ]; then
