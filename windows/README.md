@@ -8,7 +8,7 @@ You should have gcc installed and added to PATH
 
 Installation of the script
 
-This script create C:\Scripts dirrectory copy script here and add this dirrectory to path
+This script copy "compilecpp.bat" and "run.bat" into into C:\Users\{username}\AppData\Local\Microsoft\WindowsApps folder
 ```bash
 install.bat
 ```
