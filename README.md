@@ -38,9 +38,3 @@ Added new feature, now you can whatch your program runtime just typing:
 run main -t
 ```
 
-# Installing:
-
-```sh
-chmod +x install.sh
-./install.sh
-```
