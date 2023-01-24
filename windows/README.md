@@ -25,6 +25,10 @@ choco install mingw
 Installation of the script
 
 This script copy "compilecpp.bat" and "run.bat" into C:\Users\{username}\AppData\Local\Microsoft\WindowsApps folder
+
+Doubleclick "install.bat" in downloaded folder
+
+Or just run this command in cmd:
 ```bash
 install.bat
 ```
