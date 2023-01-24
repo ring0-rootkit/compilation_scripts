@@ -22,7 +22,7 @@ Installing MinGW:
 choco install mingw
 ```
 
-Installation of the script
+Installation of the script:
 
 This script copy "compilecpp.bat" and "run.bat" into C:\Users\{username}\AppData\Local\Microsoft\WindowsApps folder
 
