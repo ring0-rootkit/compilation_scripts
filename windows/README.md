@@ -17,14 +17,14 @@ Run in PowerShell:
 ```
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 ```
-Installing MinGW
+Installing MinGW:
 ```bash
 choco install mingw
 ```
 
 Installation of the script
 
-This script copy "compilecpp.bat" and "run.bat" into into C:\Users\{username}\AppData\Local\Microsoft\WindowsApps folder
+This script copy "compilecpp.bat" and "run.bat" into C:\Users\{username}\AppData\Local\Microsoft\WindowsApps folder
 ```bash
 install.bat
 ```
