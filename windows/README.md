@@ -28,7 +28,7 @@ This script copy "compilecpp.bat" and "run.bat" into C:\Users\{username}\AppData
 
 Doubleclick "install.bat" in downloaded folder
 
-Or just run this command in cmd:
+Or just run this command in cmd(you should be located in downloaded windows folder):
 ```bash
 install.bat
 ```
