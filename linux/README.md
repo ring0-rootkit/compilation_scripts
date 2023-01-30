@@ -1,6 +1,5 @@
 # Installing:
 
 ```sh
-chmod +x install.sh
-./install.sh
+bash install.sh
 ```
