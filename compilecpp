@@ -1,0 +1,84 @@
+#!/bin/bash
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' #no color
+if [[ "$2" == "-o" ]]; then
+	out_folder="$3"
+else
+	out_folder=./bin/
+	if ! [ -e "$out_folder" ]; then
+		echo dirrectory "$out_folder" does not exist
+		echo please create this directory or edit "$0"
+		exit 0
+	fi
+	out_folder=./bin/"$1"
+fi
+
+
+# Start the progress bar in a subshell
+(
+
+  length=20
+    direction=1
+  position=2
+
+  while :
+  do
+    # Build the progress bar string
+    progress_bar="·"
+    for i in $(seq 2 $length); do
+      if [ $i -eq $position ]; then
+        progress_bar="$progress_bar<=>"
+      else
+        progress_bar="$progress_bar·"
+      fi
+    done
+
+    # Clear the line and print the progress bar
+    printf "\r\033[33m%s\033[0m" "$progress_bar Compiling"
+    sleep 0.2
+
+    # Update the position and direction
+    if [ $position -eq $(($length - 2)) ]; then
+      direction=-1
+    elif [ $position -eq 2 ]; then
+      direction=1
+    fi
+    position=$(($position + $direction))
+  done
+) &
+
+# Store the PID of the subshell
+pid=$!
+
+# Run the main program
+g++ "$1".cpp -Wall -Wextra -Werror -pedantic -std=c++20 -o "$out_folder" 2> /tmp/compilecpp.log
+
+# Check the exit status of the main program
+status=$?
+
+# Kill the subshell if the main program finishes successfully
+if [[ $status -eq 0 || $status -eq 1 ]]; then
+  printf "\033[2K\r"
+  kill $pid
+fi
+
+
+#end of progress bar code
+
+
+cat /tmp/compilecpp.log
+
+is_compiled=$?
+if [ -s /tmp/compilecpp.log ]; then
+	echo -e compilation ${RED}failed${NC}[${RED}-${NC}]
+	rm /tmp/compilecpp.log
+	exit 0
+fi
+echo -e compiled ${GREEN}successfully${NC}[${GREEN}+${NC}]
+rm /tmp/compilecpp.log
+
+if [[ "$2" == "r" || "$4" == "r" ]]; then
+	./"$out_folder"
+	echo
+fi
