@@ -14,7 +14,6 @@ else
 	out_folder=./bin/"$1"
 fi
 
-
 # Start the progress bar in a subshell
 (
 
