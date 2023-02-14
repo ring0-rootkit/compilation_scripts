@@ -33,7 +33,7 @@ Usage:
 ```sh
 run main
 ```
-Added new feature, now you can whatch your program runtime just typing:
+Added new feature, now you can watch your program runtime just typing:
 ```sh
 run main -t
 ```
