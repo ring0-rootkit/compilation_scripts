@@ -110,7 +110,7 @@ fi
 echo -e compiled ${GREEN}successfully${NC}[${GREEN}+${NC}]
 rm /tmp/compilecpp.log
 
-if [[ "$2" == "r" || "$4" == "r" ]]; then
+if [[ "$2" == "r" || "$4" == "r" || "$3" == "r" ]]; then
 	./"$out_folder".o
 	echo
 fi
