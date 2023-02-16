@@ -71,7 +71,7 @@ trap cleanup INT
 pid=$!
 
 # Run the main program
-if [[ "$2" == "nas" || "$3" == "nas" ]]
+if [[ "$2" == "nas" || "$3" == "nas" || "$5" == "nas" ]]
     if [ -e compileList.txt ];then
         g++ "$1".cpp $(more compileList.txt) -Wall -Wextra -Werror -pedantic -std=c++23 -o "$out_folder".o 2> /tmp/compilecpp.log
     else
