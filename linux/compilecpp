@@ -71,10 +71,18 @@ trap cleanup INT
 pid=$!
 
 # Run the main program
-if [ -e compileList.txt ];then
-    g++ "$1".cpp $(more compileList.txt) -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o "$out_folder".o 2> /tmp/compilecpp.log
+if [[ "$2" == "nas" || "$3" == "nas" ]]
+    if [ -e compileList.txt ];then
+        g++ "$1".cpp $(more compileList.txt) -Wall -Wextra -Werror -pedantic -std=c++23 -o "$out_folder".o 2> /tmp/compilecpp.log
+    else
+        g++ "$1".cpp -Wall -Wextra -Werror -pedantic -std=c++23 -o $"out_folder".o 2>/tmp/compilecpp.log
+    fi
 else
-    g++ "$1".cpp -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o $"out_folder".o 2>/tmp/compilecpp.log
+    if [ -e compileList.txt ];then
+        g++ "$1".cpp $(more compileList.txt) -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o "$out_folder".o 2> /tmp/compilecpp.log
+    else
+        g++ "$1".cpp -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o $"out_folder".o 2>/tmp/compilecpp.log
+    fi
 fi
 #g++ "$1".cpp -Wall -Wextra -Werror -pedantic -std=c++23 -o "$out_folder" 2> /tmp/compilecpp.log
 
