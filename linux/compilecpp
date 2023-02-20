@@ -4,13 +4,23 @@ GREEN='\033[0;32m'
 NC='\033[0m' #no color
 
 if [[ "$1" == "add" ]]; then
-	echo "$(echo $(more compileList.txt))" "$2" >compileList.txt
-	exit
+	echo "$(echo $(cat compileList.txt))" "$2" >compileList.txt
+	exit 0
 fi
 
 if [[ "$1" == "clear" ]]; then
 	echo>compileList.txt
-	exit
+	exit 0
+fi
+
+if [[ "$1" == "help" ]]; then
+	echo  add file.cpp   -----  link file.cpp with current code
+	echo clear       -----     delete link queue
+	echo -o outFolder/main.o  -----   save file to outFolder/main.o  ./outFolder/main.o
+	echo main nas     -----     compile file main.cpp without adress sanitizer
+	echo main r     -----     compile file main.cpp and run it after compiling
+	echo help      -----     show this message
+	exit 0
 fi
 
 if [[ "$2" == "-o" ]]; then
@@ -29,7 +39,7 @@ fi
 function cleanup() {
   printf "\033[2K\r"
   kill $pid
-  exit
+  exit 0
 }
 
 trap cleanup INT
@@ -101,7 +111,7 @@ fi
 
 cat /tmp/compilecpp.log
 
-is_compiled=$?
+
 if [ -s /tmp/compilecpp.log ]; then
 	echo -e compilation ${RED}failed${NC}[${RED}-${NC}]
 	rm /tmp/compilecpp.log
@@ -114,3 +124,4 @@ if [[ "$2" == "r" || "$4" == "r" || "$3" == "r" ]]; then
 	./"$out_folder".o
 	echo
 fi
+
