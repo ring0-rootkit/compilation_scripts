@@ -30,7 +30,7 @@ And it will compile and link all cpp files from compileList.txt including your m
 
 So you shouldn't add main.cpp into this list
 
-If you want to clear this list add start adding from scratch
+If you want to clear this list and start adding from scratch
 
 ```bash
 compilecpp clear
