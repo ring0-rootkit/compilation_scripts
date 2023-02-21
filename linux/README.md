@@ -9,7 +9,7 @@ cd ../..
 
 If you want to delete it just run this after previous steps
 ```sh
-rm -r compilation_scripts
+rm -rf compilation_scripts
 ```
 
 # Linux only feature
