@@ -1,7 +1,15 @@
 # Installing:
 
 ```sh
+git clone https://github.com/Ord1naryMan/compilation_scripts.git
+cd compilation_scripts/linux
 bash install.sh
+cd ../..
+```
+
+If you want to delete it just run this after previous steps
+```sh
+rm compilation_scripts
 ```
 
 # Linux only feature
