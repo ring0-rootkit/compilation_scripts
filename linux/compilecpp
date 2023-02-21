@@ -9,7 +9,10 @@ if [[ "$1" == "add" ]]; then
 fi
 
 if [[ "$1" == "clear" ]]; then
-	echo>compileList.txt
+	if [ -e compileList.txt ];then
+		rm compileList.txt
+	fi
+	touch compileList.txt
 	exit 0
 fi
 
@@ -37,8 +40,11 @@ fi
 
 # make cleanup function which prevent progress bar from not killing
 function cleanup() {
-  printf "\033[2K\r"
-  kill $pid
+  if [[ $pid != -1 ]];then
+    printf "\033[2K\r"
+    kill $pid
+  fi
+  echo
   exit 0
 }
 
@@ -82,14 +88,14 @@ pid=$!
 
 # Run the main program
 if [[ "$2" == "nas" || "$3" == "nas" || "$5" == "nas" ]]; then
-    if [ -e compileList.txt ];then
+    if [ -s compileList.txt ];then
         g++ "$1".cpp $(more compileList.txt) -fdiagnostics-color -Wall -Wextra -Werror -pedantic -std=c++23 -o "$out_folder".o 2> /tmp/compilecpp.log
     else
         g++ "$1".cpp -fdiagnostics-color -Wall -Wextra -Werror -pedantic -std=c++23 -o "$out_folder".o 2>/tmp/compilecpp.log
     fi
 else
-    if [ -e compileList.txt ];then
-        g++ "$1".cpp $(more compileList.txt) -fdiagnostics-color -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o "$out_folder".o 2> /tmp/compilecpp.log
+    if [ -s compileList.txt ];then
+        g++ "$1".cpp $(more compileList.txt) -fdiagnostics-color -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o "$out_folder".o 2>/tmp/compilecpp.log
     else
         g++ "$1".cpp -fdiagnostics-color -Wall -Wextra -Werror -pedantic -fsanitize=address -std=c++23 -o "$out_folder".o 2>/tmp/compilecpp.log
     fi
@@ -105,7 +111,7 @@ if [[ $status -eq 0 || $status -eq 1 ]]; then
   kill $pid
 fi
 
-
+pid=-1
 #end of progress bar code
 
 
